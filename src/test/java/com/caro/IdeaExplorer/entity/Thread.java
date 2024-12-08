@@ -1,25 +1,29 @@
-package com.caro.IdeaExplorer.chat;
+package com.caro.IdeaExplorer.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import jakarta.persistence.Id;
 
+
+/**
+ * Entity for chat thread which contains different kinds of content (messages, prompts and api output).
+ */
 @NoArgsConstructor
 @Getter
 @Setter
 @Entity
-public class Author {
+public class Thread {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String description;
 
-    public Author(Long id, String name){
-        this.id = id;
-        this.name = name;
-    }
+    @ManyToOne
+    private Team team;
 }

@@ -1,4 +1,4 @@
-package com.caro.IdeaExplorer.chat;
+package com.caro.IdeaExplorer.entity;
 
 public class Message extends Content {
 }
