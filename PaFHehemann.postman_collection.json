@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "f8ef8be9-495b-4a23-8451-a204f1aa0b62",
+		"name": "PaFHehemann",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24166838"
+	},
+	"item": [
+		{
+			"name": "GetMember",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/member",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"member"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"name\": \"Djuna\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/upsert/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"upsert",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
