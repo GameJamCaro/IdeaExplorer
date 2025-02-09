@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Date;
+
 
 @NoArgsConstructor
 @Getter
@@ -16,6 +18,7 @@ public class Content {
     private Long id;
     private String text;
     private Member author;
+    private Date creationTime;
 
     @ManyToOne
     private Thread thread; // a thread contains different kinds of content (message, prompt or api output)
