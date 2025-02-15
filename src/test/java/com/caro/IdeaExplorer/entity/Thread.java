@@ -12,6 +12,7 @@ import jakarta.persistence.Id;
 
 /**
  * Entity for chat thread which contains different kinds of content (messages, prompts and api output).
+ * Thread is the observable
  */
 @NoArgsConstructor
 @Getter
@@ -24,6 +25,15 @@ public class Thread {
     private String name;
     private String description;
 
-    @ManyToOne
-    private Team team;
+
+
+
+    void addAuthor(Author author) {
+        // add author to thread
+
+
+
+
+    }
 }
+

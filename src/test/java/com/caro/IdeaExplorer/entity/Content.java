@@ -17,13 +17,13 @@ public class Content {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String text;
-    private Member author;
+    private Author author;
     private Date creationTime;
 
     @ManyToOne
     private Thread thread; // a thread contains different kinds of content (message, prompt or api output)
 
-    public Content(Long id, String content, Member author){
+    public Content(Long id, String content, Author author){
         this.id = id;
         this.text = text;
         this.author = author;

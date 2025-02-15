@@ -1,6 +1,6 @@
 package com.caro.IdeaExplorer.api;
 
-import com.caro.IdeaExplorer.entity.Member;
+import com.caro.IdeaExplorer.entity.Author;
 import com.caro.IdeaExplorer.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -25,16 +25,16 @@ public class MemberController {
     }
 
     @GetMapping("/member")
-    public List<Member> getMember(@RequestParam Long id)
+    public List<Author> getMember(@RequestParam Long id)
     {
         return memberService.findMemberById(id);
     }
 
     @PatchMapping(path = "/upsert/json", consumes = "application/json", produces = "application/json")
     @ResponseBody
-    public Member saveMember(@RequestBody Member member)
+    public Author saveMember(@RequestBody Author author)
     {
-        return memberService.upsertMember(member);
+        return memberService.upsertMember(author);
     }
 
 

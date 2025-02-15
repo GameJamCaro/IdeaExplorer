@@ -1,6 +1,6 @@
 package com.caro.IdeaExplorer.service;
 
-import com.caro.IdeaExplorer.entity.Member;
+import com.caro.IdeaExplorer.entity.Author;
 import com.caro.IdeaExplorer.repo.MemberRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,18 +16,18 @@ public class MemberService {
 
 
 
-    private List<Member> memberList;
+    private List<Author> authorList;
 
 
     private MemberRepo memberRepo;
 
     public MemberService(){
-        memberList = new ArrayList<>();
+        authorList = new ArrayList<>();
 
-        Member member1 = new Member(1L, "Djuna");
-        Member member2 = new Member(2L, "Leopold");
+        Author author1 = new Author(1L, "Djuna");
+        Author author2 = new Author(2L, "Leopold");
 
-        memberList.addAll(Arrays.asList(member1, member2));
+        authorList.addAll(Arrays.asList(author1, author2));
     }
 
 
@@ -38,25 +38,25 @@ public class MemberService {
     public MemberService(MemberRepo memberRepo) {
         this.memberRepo = memberRepo;
     }
-    public List<Member> findMemberById(Long idFilter) {
+    public List<Author> findMemberById(Long idFilter) {
         //List<Member> memberList = new ArrayList<>();
-        for (Member member:  memberList)
+        for (Author author : authorList)
         {
         if (idFilter == null) {
-            memberRepo.findAll().forEach(memberList::add);
+            memberRepo.findAll().forEach(authorList::add);
         } else {
-            memberRepo.findById(idFilter).ifPresent(memberList::add);
+            memberRepo.findById(idFilter).ifPresent(authorList::add);
         }
         }
-        return memberList;
+        return authorList;
     }
 
-    public Member upsertMember(Member member) {
-        Member savedMember = memberRepo.save(member);
-        if (savedMember == null) {
+    public Author upsertMember(Author author) {
+        Author savedAuthor = memberRepo.save(author);
+        if (savedAuthor == null) {
             throw new RuntimeException("Member could not be saved");
         }
-        return savedMember;
+        return savedAuthor;
     }
 
 
