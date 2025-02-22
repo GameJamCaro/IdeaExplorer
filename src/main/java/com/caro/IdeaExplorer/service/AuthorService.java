@@ -1,7 +1,7 @@
 package com.caro.IdeaExplorer.service;
 
 import com.caro.IdeaExplorer.entity.Author;
-import com.caro.IdeaExplorer.repo.MemberRepo;
+import com.caro.IdeaExplorer.repo.AuthorRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,16 +12,16 @@ import java.util.List;
 
 
 @Service
-public class MemberService {
+public class AuthorService {
 
 
 
     private List<Author> authorList;
 
 
-    private MemberRepo memberRepo;
+    private AuthorRepo authorRepo;
 
-    public MemberService(){
+    public AuthorService(){
         authorList = new ArrayList<>();
 
         Author author1 = new Author(1L, "Djuna");
@@ -35,24 +35,24 @@ public class MemberService {
 
 
     @Autowired // Constructor injection
-    public MemberService(MemberRepo memberRepo) {
-        this.memberRepo = memberRepo;
+    public AuthorService(AuthorRepo authorRepo) {
+        this.authorRepo = authorRepo;
     }
-    public List<Author> findMemberById(Long idFilter) {
-        //List<Member> memberList = new ArrayList<>();
+    public List<Author> findAuthorById(Long idFilter) {
+        //List<Author> authorList = new ArrayList<>();
         for (Author author : authorList)
         {
         if (idFilter == null) {
-            memberRepo.findAll().forEach(authorList::add);
+            authorRepo.findAll().forEach(authorList::add);
         } else {
-            memberRepo.findById(idFilter).ifPresent(authorList::add);
+            authorRepo.findById(idFilter).ifPresent(authorList::add);
         }
         }
         return authorList;
     }
 
     public Author upsertMember(Author author) {
-        Author savedAuthor = memberRepo.save(author);
+        Author savedAuthor = authorRepo.save(author);
         if (savedAuthor == null) {
             throw new RuntimeException("Member could not be saved");
         }

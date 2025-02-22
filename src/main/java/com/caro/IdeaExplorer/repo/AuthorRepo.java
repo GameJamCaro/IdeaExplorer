@@ -3,5 +3,5 @@ package com.caro.IdeaExplorer.repo;
 import com.caro.IdeaExplorer.entity.Author;
 import org.springframework.data.repository.CrudRepository;
 
-public interface MemberRepo extends CrudRepository<Author, Long> {
+public interface AuthorRepo extends CrudRepository<Author, Long> {
 }

@@ -7,11 +7,11 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class MemberDto {
+public class AuthorDto {
     private Long id;
     private String name;
 
-    public MemberDto(Long id, String name) {
+    public AuthorDto(Long id, String name) {
         this.id = id;
         this.name = name;
     }
