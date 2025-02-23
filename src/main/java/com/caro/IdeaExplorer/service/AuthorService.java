@@ -14,31 +14,19 @@ import java.util.List;
 @Service
 public class AuthorService {
 
-
-
     private List<Author> authorList;
 
-
     private AuthorRepo authorRepo;
-
-    public AuthorService(){
-        authorList = new ArrayList<>();
-
-        Author author1 = new Author(1L, "Djuna");
-        Author author2 = new Author(2L, "Leopold");
-
-        authorList.addAll(Arrays.asList(author1, author2));
-    }
-
-
 
 
 
     @Autowired // Constructor injection
     public AuthorService(AuthorRepo authorRepo) {
         this.authorRepo = authorRepo;
+
+        addAuthors();
     }
-    public List<Author> findAuthorById(Long idFilter) {
+    public List<Author> findAuthorById(Integer idFilter) {
         //List<Author> authorList = new ArrayList<>();
         for (Author author : authorList)
         {
@@ -51,13 +39,26 @@ public class AuthorService {
         return authorList;
     }
 
-    public Author upsertMember(Author author) {
+    public Author upsertAuthor(Author author) {
         Author savedAuthor = authorRepo.save(author);
         if (savedAuthor == null) {
             throw new RuntimeException("Member could not be saved");
         }
         return savedAuthor;
     }
+
+
+    public void addAuthors(){
+        authorList = new ArrayList<>();
+
+        Author author1 = new Author(1L, "Djuna");
+        Author author2 = new Author(2L, "Leopold");
+
+        authorList.addAll(Arrays.asList(author1, author2));
+    }
+
+
+
 
 
 

@@ -20,11 +20,6 @@ public class Author {
     private String name;
 
 
-    @ManyToOne
-    private Content content;
-
-    @ManyToOne
-    private Thread thread;
 
     public Author(Long id, String name){
         this.id = id;

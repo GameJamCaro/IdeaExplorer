@@ -15,17 +15,22 @@ import java.util.Date;
 public class Content {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String text;
+    @OneToOne
+    @JoinColumn(name = "author_id")
     private Author author;
+    private ContentType type;
     private Date creationTime;
 
     @ManyToOne
     private Thread thread; // a thread contains different kinds of content (message, prompt or api output)
 
-    public Content(Long id, String content, Author author){
+    public Content(Integer id, String content, Author author, ContentType type) {
         this.id = id;
         this.text = text;
         this.author = author;
+        this.type = type;
+        this.creationTime = new Date();
     }
 }

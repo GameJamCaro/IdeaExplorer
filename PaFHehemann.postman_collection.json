@@ -7,46 +7,39 @@
 	},
 	"item": [
 		{
-			"name": "GetMember",
+			"name": "GetAuthors",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "localhost:8080/member",
+					"raw": "localhost:8080/",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"member"
+						""
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "New Request",
+			"name": "GetContents",
 			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"id\": 0,\r\n    \"name\": \"Djuna\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
+				"auth": {
+					"type": "noauth"
 				},
+				"method": "GET",
+				"header": [],
 				"url": {
-					"raw": "localhost:8080/upsert/",
+					"raw": "localhost:8080/contents",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"upsert",
-						""
+						"contents"
 					]
 				}
 			},
