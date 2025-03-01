@@ -1,5 +1,6 @@
 package com.caro.IdeaExplorer.entity;
 
+import com.caro.IdeaExplorer.repo.ThreadRepo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,6 +9,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import jakarta.persistence.Id;
+
+import java.util.Optional;
 
 
 /**
@@ -18,7 +21,7 @@ import jakarta.persistence.Id;
 @Getter
 @Setter
 @Entity
-public class Thread {
+public class Thread implements ThreadRepo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -31,24 +34,90 @@ public class Thread {
     @ManyToOne // a thread contains different authors
     private Author author;
 
-    void addContent(Content content) {
-        // add content to thread
+
+    @Override
+    public void addAuthor(Author author) {
+
     }
 
-    void deleteContent(Content content) {
-        // delete content from thread
+    @Override
+    public void removeAuthor(Author author) {
+
     }
 
-    void addAuthor(Author author) {
-        // add author to thread
+    @Override
+    public void notifyAuthor(Author author) {
+
     }
 
-    void deleteAuthor(Author author) {
-        // delete author from thread
+    @Override
+    public void addContent(Content content) {
+        
     }
 
-    void notifyAuthors() {
-        // notify authors of thread
+    @Override
+    public void removeContent(Content content) {
+
+    }
+
+    @Override
+    public <S extends Thread> S save(S entity) {
+        return null;
+    }
+
+    @Override
+    public <S extends Thread> Iterable<S> saveAll(Iterable<S> entities) {
+        return null;
+    }
+
+    @Override
+    public Optional<Thread> findById(Integer integer) {
+        return Optional.empty();
+    }
+
+    @Override
+    public boolean existsById(Integer integer) {
+        return false;
+    }
+
+    @Override
+    public Iterable<Thread> findAll() {
+        return null;
+    }
+
+    @Override
+    public Iterable<Thread> findAllById(Iterable<Integer> integers) {
+        return null;
+    }
+
+    @Override
+    public long count() {
+        return 0;
+    }
+
+    @Override
+    public void deleteById(Integer integer) {
+
+    }
+
+    @Override
+    public void delete(Thread entity) {
+
+    }
+
+    @Override
+    public void deleteAllById(Iterable<? extends Integer> integers) {
+
+    }
+
+    @Override
+    public void deleteAll(Iterable<? extends Thread> entities) {
+
+    }
+
+    @Override
+    public void deleteAll() {
+
     }
 }
 

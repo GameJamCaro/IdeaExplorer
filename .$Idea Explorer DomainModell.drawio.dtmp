@@ -199,7 +199,7 @@
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="_U_OknhAgK5K0AittLdZ-1" value="Warum Long anstatt Integer?" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="180" width="220" height="60" as="geometry" />
+          <mxGeometry x="140" y="170" width="220" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
