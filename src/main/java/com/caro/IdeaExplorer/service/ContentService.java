@@ -45,9 +45,9 @@ public class ContentService {
     public void addContents(){
         contentList = new ArrayList<>();
 
-        Content message = new Content(1, "This is the first idea", new Author(1L, "Author 1"), ContentType.MESSAGE);
-        Content prompt = new Content(2, "This is the second idea", new Author(2L, "Author 2"), ContentType.PROMPT);
-        Content message1 = new Content(3, "This is the third idea", new Author(3L, "Author 3"), ContentType.MESSAGE);
+        Content message = new Content(1, "This is the first idea", new Author(1, "Author 1"), ContentType.MESSAGE);
+        Content prompt = new Content(2, "This is the second idea", new Author(2, "Author 2"), ContentType.PROMPT);
+        Content message1 = new Content(3, "This is the third idea", new Author(3, "Author 3"), ContentType.MESSAGE);
 
         contentList.addAll(Arrays.asList(message, prompt, message1));
     }

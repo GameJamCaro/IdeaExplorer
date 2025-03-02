@@ -2,6 +2,7 @@ package com.caro.IdeaExplorer.service;
 
 import com.caro.IdeaExplorer.entity.Author;
 import com.caro.IdeaExplorer.repo.AuthorRepo;
+import com.caro.IdeaExplorer.repo.ThreadRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,23 +11,23 @@ import java.util.Arrays;
 import java.util.List;
 
 
-
 @Service
-public class AuthorService {
+public class ThreadService {
 
+    private final AuthorRepo authorRepo;
     private List<Author> authorList;
-
-    private AuthorRepo authorRepo;
+    private ThreadRepo threadRepo;
 
 
 
     @Autowired // Constructor injection
-    public AuthorService(AuthorRepo authorRepo) {
-        this.authorRepo = authorRepo;
+    public ThreadService(ThreadRepo threadRepo, AuthorRepo authorRepo) {
+        this.threadRepo = threadRepo;
 
         addAuthors();
+        this.authorRepo = authorRepo;
     }
-    public List<Author> findAuthorById(Integer idFilter) {
+    /*public List<Author> findAuthorById(Integer idFilter) {
         //List<Author> authorList = new ArrayList<>();
         for (Author author : authorList)
         {
@@ -37,7 +38,7 @@ public class AuthorService {
         }
         }
         return authorList;
-    }
+    }*/
 
     public Author upsertAuthor(Author author) {
         Author savedAuthor = authorRepo.save(author);
@@ -55,7 +56,16 @@ public class AuthorService {
         Author author2 = new Author(2, "Leopold");
 
         authorList.addAll(Arrays.asList(author1, author2));
+        Thread thread = new Thread();
+
+//        for (Author author : authorList) {
+//            thread.addAuthor(author);
+//        }
     }
+
+
+
+
 
 
 

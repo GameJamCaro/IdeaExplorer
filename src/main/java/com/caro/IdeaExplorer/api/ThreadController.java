@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @RestController
-public class AuthorController {
+public class ThreadController {
 
     private AuthorService authorService;
     private ContentService contentService;
@@ -20,7 +20,7 @@ public class AuthorController {
 
 
     @Autowired
-    public AuthorController(AuthorService authorService, ContentService contentService) {
+    public ThreadController(AuthorService authorService, ContentService contentService) {
         this.authorService = authorService;
         this.contentService = contentService;
     }
@@ -31,6 +31,12 @@ public class AuthorController {
         //contentService.addContents();
         return contentService.getAllContents();
     }
+
+   /* //add function to add author to thread
+    @PostMapping("/authors")
+    public Author addAuthor(@RequestBody Author author) {
+       return authorService.addAuthor(author);
+    }*/
 
 
     @GetMapping("/authors")

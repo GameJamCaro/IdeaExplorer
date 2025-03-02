@@ -1,16 +1,16 @@
 package com.caro.IdeaExplorer.entity;
 
 import com.caro.IdeaExplorer.repo.ThreadRepo;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import jakarta.persistence.Id;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 
 /**
@@ -21,103 +21,40 @@ import java.util.Optional;
 @Getter
 @Setter
 @Entity
-public class Thread implements ThreadRepo {
+public abstract class Thread  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Integer id;
     private String name;
-    private String description;
-
-    @ManyToOne  // a thread contains different kinds of content (message, prompt or api output)
-    private Content content;
-
-    @ManyToOne // a thread contains different authors
-    private Author author;
 
 
-    @Override
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true) // a thread contains different kinds of content (message, prompt or api output)
+    private Set<Content> contents = new HashSet<>();
+
+    @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Author> authors = new HashSet<>();
+
+
     public void addAuthor(Author author) {
-
+        this.authors.add(author);
     }
 
-    @Override
     public void removeAuthor(Author author) {
-
+        this.authors.remove(author);
     }
 
-    @Override
     public void notifyAuthor(Author author) {
-
+        // notify the author
     }
 
-    @Override
     public void addContent(Content content) {
-        
+
     }
 
-    @Override
     public void removeContent(Content content) {
 
-    }
+    };
 
-    @Override
-    public <S extends Thread> S save(S entity) {
-        return null;
-    }
 
-    @Override
-    public <S extends Thread> Iterable<S> saveAll(Iterable<S> entities) {
-        return null;
-    }
-
-    @Override
-    public Optional<Thread> findById(Integer integer) {
-        return Optional.empty();
-    }
-
-    @Override
-    public boolean existsById(Integer integer) {
-        return false;
-    }
-
-    @Override
-    public Iterable<Thread> findAll() {
-        return null;
-    }
-
-    @Override
-    public Iterable<Thread> findAllById(Iterable<Integer> integers) {
-        return null;
-    }
-
-    @Override
-    public long count() {
-        return 0;
-    }
-
-    @Override
-    public void deleteById(Integer integer) {
-
-    }
-
-    @Override
-    public void delete(Thread entity) {
-
-    }
-
-    @Override
-    public void deleteAllById(Iterable<? extends Integer> integers) {
-
-    }
-
-    @Override
-    public void deleteAll(Iterable<? extends Thread> entities) {
-
-    }
-
-    @Override
-    public void deleteAll() {
-
-    }
 }
 
