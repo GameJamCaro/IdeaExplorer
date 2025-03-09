@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import lombok.*;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 
 /**
@@ -29,10 +26,10 @@ public class Thread  {
 
 
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true) // a thread contains different kinds of content (message, prompt or api output)
-    private Set<Content> contents = new HashSet<>();
+    private List<Content> contents = new ArrayList<>();
 
     @OneToMany(mappedBy = "thread", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<Author> authors = new HashSet<>();
+    private List<Author> authors = new ArrayList<>();
 
 
     public void addAuthor(Author author) {
