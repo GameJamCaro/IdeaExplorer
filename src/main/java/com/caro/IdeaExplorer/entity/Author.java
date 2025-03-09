@@ -2,9 +2,7 @@ package com.caro.IdeaExplorer.entity;
 
 import com.caro.IdeaExplorer.repo.AuthorRepo;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Optional;
 
@@ -13,9 +11,11 @@ import java.util.Optional;
  * Member is the observer
  */
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 public class Author  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

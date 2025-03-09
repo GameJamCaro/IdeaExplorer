@@ -2,19 +2,21 @@ package com.caro.IdeaExplorer.entity;
 
 import com.caro.IdeaExplorer.repo.ContentRepo;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 import java.util.Optional;
 
 
 @NoArgsConstructor
+@AllArgsConstructor
 @Getter
 @Setter
 @Entity
+@Builder
 public class Content  {
+
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

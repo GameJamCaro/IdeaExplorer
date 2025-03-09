@@ -3,9 +3,7 @@ package com.caro.IdeaExplorer.entity;
 import com.caro.IdeaExplorer.repo.ThreadRepo;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +19,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-public abstract class Thread  {
+@AllArgsConstructor
+@Builder
+public class Thread  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
